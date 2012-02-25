@@ -132,8 +132,14 @@ static const CGFloat kHeight = 36.0f;
             checked = !checked;
             [self updateCheckBoxImage];
             if (delegate && stateChangedSelector) {
+
+// Suppressing leak warning because using the ARC compatible fork
+// means your delegate's actions are probably ARC compatible too
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
                 [delegate performSelector:stateChangedSelector
                                withObject:self];
+#pragma clang diagnostic pop
             }
         }
     }
