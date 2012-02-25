@@ -78,13 +78,6 @@ static const CGFloat kHeight = 36.0f;
     return self;
 }
 
-- (void) dealloc
-{
-    [checkBoxImageView release];
-    [textLabel release];
-    [super dealloc];
-}
-
 - (void) setText:(NSString *)text
 {
     [textLabel setText:text];
